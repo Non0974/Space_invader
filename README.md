@@ -9,8 +9,6 @@ This is a project I realized in my 1st year of University Bachelor of Technology
 
 ### Recommended Setup
 
-### Materials
-
 ## Usage
 
 ## Debug
