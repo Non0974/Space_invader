@@ -88,7 +88,7 @@ int main() //fonction principale
 		wrefresh(win);//rafraichit ce qu'on voit sans "clignotements"
 
 		int ch = wgetch(win);//ch vaut à ce qu'on va taper
-		mouv = (char)ch;//on viet attribuer ce qu'on a attribuer à mouv pour faire bouger le joueur
+		mouv = (char)ch;//on vient attribuer ce qu'on a attribuer à mouv pour faire bouger le joueur
 
 		mouv_j (&mouv, &posJ, tirH, tirL , &entr);
 		maj_tir_j (tirH, tirL, alien, &score, &ma , &victoire , bouclier);
@@ -362,26 +362,31 @@ void mvmt_al(PNJ alien[NL][MAPL], int *perdu , int *directionA , int tirAH[MT], 
 
 	if(*ma <= (MAPL*NL)-2 && *entr > 3)
 	{
+		int flip = 0;
 		for ( int i=0 ; i < NL ; i++)
 		{
 			for (int j = 0; j < MAPL; j++) //pour tous les aliens 
 			{
 				if (alien[i][j].vivant > 0 ) //si alien vivant
 				{ 
-					if(alien[i][j].x == 1 || alien[i][j].x == L - 2)// si l'alien atteint 1 bord
+					if(alien[i][j].x == 1 || alien[i][j].x == L - 2)//si l'alien atteint 1 bord
 					{
-						descendre = 2;//on active la descente de 2 lignes
-						*directionA *= -1;//équivaut à faire: directionA X -1 : chgmt de direction
-						break;
+						flip = 1;//on note qu'il faut changer de direction, sans le faire tout de suite
 					}
 					if (alien[i][j].y >= H - 2)
 					{
-						*perdu = 1;// si bas de l'écran atteint, c'est perdu
+						*perdu = 1;// si bas de l'écran atteint, perdu
 						return;
 					}
 				}
 			}
 		}
+		if (flip)
+		{
+			descendre = 2;//on active la descente de 2 lignes
+			*directionA *= -1;//équivaut à faire: directionA X -1 : chgmt de direction, une seule fois
+		}
+
 		for (int i = 0; i < NL; i++) 
 		{
 			for (int l = 0; l < MAPL; l++) //pour tous les aliens, on va appliquer les mouvements

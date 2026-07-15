@@ -1,7 +1,7 @@
 ## Recreating Space Invader game
 
 # Overview
-This is a project I realized in my 1st year of University Bachelor of Technology. We had to choose between multiple games like Pac-Man, Snake, Pong and others.
+This is a project I realized in my 1st year of University Bachelor of Technology. We had to choose between multiple games like Pac-Man, Snake, Pong and others. I tried to explain the most of my code.
 
 ## Setup
 
